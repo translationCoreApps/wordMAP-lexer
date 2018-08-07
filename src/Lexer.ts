@@ -12,13 +12,15 @@ export interface NumberObject {
 export default class Lexer {
 
     /**
-     * Generates an array of measured tokens for the sentence.
-     * @param {string} sentence - the sentence to tokenize
-     * @return {Token[]}
+     * Converts an array of tokens into an array of measured tokens
+     * @param words
+     * @param sentenceCharLength - the length of the sentence in characters
      */
-    public static tokenize(sentence: string): Token[] {
-        const words = stringTokenizer.tokenize(sentence);
-        const sentenceLength = sentence.length;
+    public static tokenizeWords(words: string[], sentenceCharLength: number = -1): Token[] {
+        if (sentenceCharLength === -1) {
+            sentenceCharLength = words.join(" ").length;
+        }
+
         const tokens: Token[] = [];
         let charPos = 0;
         const occurrenceIndex: NumberObject = {};
@@ -32,7 +34,7 @@ export default class Lexer {
                 position: tokens.length,
                 characterPosition: charPos,
                 sentenceTokenLen: words.length,
-                sentenceCharLen: sentenceLength,
+                sentenceCharLen: sentenceCharLength,
                 occurrence: occurrenceIndex[word]
             }));
             charPos += word.length;
@@ -54,4 +56,13 @@ export default class Lexer {
         return occurrenceTokens;
     }
 
+    /**
+     * Generates an array of measured tokens for the sentence.
+     * @param {string} sentence - the sentence to tokenize
+     * @return {Token[]}
+     */
+    public static tokenize(sentence: string): Token[] {
+        const words = stringTokenizer.tokenize(sentence);
+        return Lexer.tokenizeWords(words, sentence.length);
+    }
 }
