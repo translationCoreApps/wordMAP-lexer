@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A lexer used in wordMAP",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "npm run lint && jest",
     "lint": "tslint -c tslint.json src/**/*.ts",
@@ -20,6 +21,7 @@
       "ts",
       "js"
     ],
+    "testEnvironment": "node",
     "transform": {
       "^.+\\.(ts)$": "ts-jest"
     },
