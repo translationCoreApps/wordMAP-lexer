@@ -1,5 +1,7 @@
 import Lexer from "./Lexer";
 import Token from "./Token";
 
-export type Token = Token;
+module.exports = {
+    Token
+};
 export default Lexer;
