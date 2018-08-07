@@ -1,3 +1,5 @@
 import Lexer from "./Lexer";
-export * from "./Token";
+import Token from "./Token";
+
+export type Token = Token;
 export default Lexer;
