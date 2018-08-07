@@ -1,7 +1,2 @@
-import Lexer from "./Lexer";
-import Token from "./Token";
-
-module.exports = {
-    Token
-};
-export default Lexer;
+export {default} from "./Lexer";
+export {default as Token} from "./Token";
