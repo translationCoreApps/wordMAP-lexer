@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/translationCoreApps/wordMAP-lexer.svg?branch=master)](https://travis-ci.org/translationCoreApps/wordMAP-lexer)
+[![codecov](https://codecov.io/gh/translationCoreApps/wordmap-lexer/branch/master/graph/badge.svg)](https://codecov.io/gh/translationCoreApps/wordmap-lexer)
+[![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
+
 # wordMAP-lexer
 A lexical tool for wordMAP
 
