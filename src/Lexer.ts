@@ -12,9 +12,10 @@ export interface NumberObject {
 export default class Lexer {
 
     /**
-     * Converts an array of tokens into an array of measured tokens
-     * @param words
+     * Converts an array of words into an array of measured tokens
+     * @param {string[]} words - an array of words
      * @param sentenceCharLength - the length of the sentence in characters
+     * @return an array of {@link Token}s
      */
     public static tokenizeWords(words: string[], sentenceCharLength: number = -1): Token[] {
         if (sentenceCharLength === -1) {
@@ -59,10 +60,17 @@ export default class Lexer {
     /**
      * Generates an array of measured tokens for the sentence.
      * @param {string} sentence - the sentence to tokenize
-     * @return {Token[]}
+     * @param [punctuation=false] - optionally indicate if punctuation should be preserved.
+     * @return {Token[]} An array of {@link Token}s
      */
-    public static tokenize(sentence: string): Token[] {
-        const words = stringTokenizer.tokenize(sentence);
+    public static tokenize(sentence: string, {punctuation = false}: { punctuation?: boolean } = {}): Token[] {
+        let words;
+
+        if (punctuation) {
+            words = stringTokenizer.tokenizeWithPunctuation(sentence);
+        } else {
+            words = stringTokenizer.tokenize(sentence);
+        }
         return Lexer.tokenizeWords(words, sentence.length);
     }
 }

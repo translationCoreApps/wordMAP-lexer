@@ -38,3 +38,20 @@ it("tokenizes an array of words", () => {
     expect(world.sentenceCharacterLength).toEqual(11);
     expect(world.sentenceTokenLength).toEqual(2);
 });
+
+it("tokenizes a sentence preserving punctuation", () => {
+    const tokens = Lexer.tokenize("hello, 'world'", {punctuation: true});
+    expect(tokens).toHaveLength(5);
+    expect(tokens[0].toString()).toEqual("hello");
+    expect(tokens[1].toString()).toEqual(",");
+    expect(tokens[2].toString()).toEqual("'");
+    expect(tokens[3].toString()).toEqual("world");
+    expect(tokens[4].toString()).toEqual("'");
+});
+
+it("tokenizes a sentence without preserving punctuation", () => {
+    const tokens = Lexer.tokenize("hello, 'world'", {punctuation: false});
+    expect(tokens).toHaveLength(2);
+    expect(tokens[0].toString()).toEqual("hello");
+    expect(tokens[1].toString()).toEqual("world");
+});
