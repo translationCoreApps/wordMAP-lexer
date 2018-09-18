@@ -20,9 +20,9 @@ npm i wordmap-lexer
 require Lexer, {Token} from 'wordmap-lexer';
 
 const tokens : Token[] = Lexer.tokenize("hello, world");
-// produces tokens "hello", ",", and "world".
+// produces tokens "hello" and "world".
 
 const puct_tokens : Token[] = Lexer.tokenize("hello, world", {punctuation: true});
-// produces tokens "hello" and "world".
+// produces tokens "hello", ",", and "world".
 
 ```
