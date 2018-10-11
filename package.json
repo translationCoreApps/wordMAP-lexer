@@ -1,6 +1,6 @@
 {
   "name": "wordmap-lexer",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A lexer used in wordMAP",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/translationCoreApps/wordMAP-lexer#readme",
   "dependencies": {
-    "string-punctuation-tokenizer": "^0.9.0"
+    "string-punctuation-tokenizer": "0.9.1"
   },
   "devDependencies": {
     "@types/jest": "^23.3.1",
