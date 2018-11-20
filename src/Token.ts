@@ -20,85 +20,6 @@ export default class Token {
     private metadata: Metadata;
 
     /**
-     * Returns the metadata stored on the token
-     * @return {object}
-     */
-    get meta() {
-        return this.metadata;
-    }
-
-    /**
-     * Returns the strong's number
-     * @return {string}
-     */
-    get strong() {
-        return this.strongNumber;
-    }
-
-    /**
-     * Returns the lemma
-     * @return {string}
-     */
-    get lemma() {
-        return this.lemmaString;
-    }
-
-    /**
-     * Returns the morphology
-     * @return {string}
-     */
-    get morph() {
-        return this.morphString;
-    }
-
-    /**
-     * Returns the position (in units of {@link Token}) of the token within the sentence.
-     * @return {number}
-     */
-    get position() {
-        return this.tokenPos;
-    }
-
-    /**
-     * Returns the occurrence index of this token
-     * @return {number}
-     */
-    get occurrence() {
-        return this.tokenOccurrence;
-    }
-
-    /**
-     * Returns the number of times this token occurs in the sentence
-     * @return {number}
-     */
-    get occurrences() {
-        return this.tokenOccurrences;
-    }
-
-    /**
-     * The length of the sentence (in units of character) in which this token occurs.
-     * This includes whitespace in the sentence
-     */
-    get sentenceCharacterLength() {
-        return this.sentenceCharLen;
-    }
-
-    /**
-     * The length of the sentence (in units of {@link Token}) in which this token occurs.
-     */
-    get sentenceTokenLength() {
-        return this.sentenceTokenLen;
-    }
-
-    /**
-     * Returns the position (in units of character) of the token within the sentence.
-     * @return {number}
-     */
-    get charPosition() {
-        return this.charPos;
-    }
-
-    /**
      *
      * @param {string} text - The text of the token.
      * @param {number} [position = 0] - the position of the n-gram within the sentence measured in {$link Token}'s
@@ -131,6 +52,85 @@ export default class Token {
         this.lemmaString = lemma;
         this.morphString = morph;
         this.metadata = Object.assign({}, arguments[0]);
+    }
+
+    /**
+     * Returns the metadata stored on the token
+     * @return {object}
+     */
+    get meta() {
+        return this.metadata;
+    }
+
+    /**
+     * Returns the strong's number
+     * @return {string}
+     */
+    get strong(): string {
+        return this.strongNumber;
+    }
+
+    /**
+     * Returns the lemma
+     * @return {string}
+     */
+    get lemma(): string {
+        return this.lemmaString;
+    }
+
+    /**
+     * Returns the morphology
+     * @return {string}
+     */
+    get morph(): string {
+        return this.morphString;
+    }
+
+    /**
+     * Returns the position (in units of {@link Token}) of the token within the sentence.
+     * @return {number}
+     */
+    get position(): number {
+        return this.tokenPos;
+    }
+
+    /**
+     * Returns the occurrence index of this token
+     * @return {number}
+     */
+    get occurrence(): number {
+        return this.tokenOccurrence;
+    }
+
+    /**
+     * Returns the number of times this token occurs in the sentence
+     * @return {number}
+     */
+    get occurrences(): number {
+        return this.tokenOccurrences;
+    }
+
+    /**
+     * The length of the sentence (in units of character) in which this token occurs.
+     * This includes whitespace in the sentence
+     */
+    get sentenceCharacterLength(): number {
+        return this.sentenceCharLen;
+    }
+
+    /**
+     * The length of the sentence (in units of {@link Token}) in which this token occurs.
+     */
+    get sentenceTokenLength(): number {
+        return this.sentenceTokenLen;
+    }
+
+    /**
+     * Returns the position (in units of character) of the token within the sentence.
+     * @return {number}
+     */
+    get charPosition(): number {
+        return this.charPos;
     }
 
     /**
@@ -169,10 +169,8 @@ export default class Token {
     public toJSON(verbose: boolean = false): object {
         if (verbose) {
             return {
-                text: this.text,
-                index: this.tokenPos,
-                occurrence: this.tokenOccurrence,
-                occurrences: this.tokenOccurrences
+                ...this.metadata,
+                index: this.tokenPos
             };
         } else {
             return {
