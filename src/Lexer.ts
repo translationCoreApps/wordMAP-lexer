@@ -1,5 +1,5 @@
 // @ts-ignore
-import stringTokenizer from "string-punctuation-tokenizer";
+import * as stringTokenizer from "string-punctuation-tokenizer";
 import Token from "./Token";
 
 export interface NumberObject {
@@ -64,13 +64,8 @@ export default class Lexer {
      * @return {Token[]} An array of {@link Token}s
      */
     public static tokenize(sentence: string, {punctuation = false}: { punctuation?: boolean } = {}): Token[] {
-        let words;
+        const words = stringTokenizer.tokenize({ text: sentence, includePunctuation: punctuation});
 
-        if (punctuation) {
-            words = stringTokenizer.tokenizeWithPunctuation(sentence);
-        } else {
-            words = stringTokenizer.tokenize(sentence);
-        }
         return Lexer.tokenizeWords(words, sentence.length);
     }
 }
